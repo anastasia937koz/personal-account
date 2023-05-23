@@ -31,11 +31,22 @@ class DataBase:
         return encoded_password
 
     def decode_password(self, encoded_password):
+        """
+        decode password
+        :param encoded_password: encoded sequence of symbols
+        :return: decoded password
+        """
         decoded_bytes = base64.b64decode(encoded_password.encode("utf-8"))
         decoded_password = decoded_bytes.decode("utf-8")
         return decoded_password
 
     def check_login_password(self, login, password):
+        """
+        verification of the existence of the login and password in database
+        :param login: username
+        :param password: sequence of symbols
+        :return: True or False
+        """
         # True, если такой пользователь существует, False в противном случае  select
         self.cur.execute(
             f"""SELECT login, password FROM sign_up INNER JOIN info ON sign_up.id = info.sign_up_id
@@ -45,6 +56,14 @@ class DataBase:
         return bool(self.cur.fetchone())
 
     def check_data(self, email, login, password):
+        """
+        verification of the existence of the login and password in database
+
+        :param email: sequence of symbols
+        :param login: username
+        :param password: sequence of symbols
+        :return:
+        """
         self.cur.execute(f"""SELECT email FROM info WHERE email='{email}' """)
         if (
             self.check_login_password(login, password)
@@ -55,6 +74,11 @@ class DataBase:
         return True
 
     def add_regist(self, *args):
+        """
+
+        :param args: list of userdata
+        :return: none
+        """
         name, surname, birth, email, photo, login, password=args
         if self.check_data(email, login, password):
             self.cur.execute(
@@ -78,6 +102,12 @@ class DataBase:
             raise ValueError()
 
     def get_user_data(self, login, password):
+        """
+        get userdata
+        :param login: username
+        :param password: sequence of symbols
+        :return:userdata
+        """
         self.cur.execute(
             f"""SELECT sign_up. id FROM sign_up INNER JOIN info ON sign_up.id = info.sign_up_id
          WHERE sign_up.login='{login}' or info.email='{login}' 
@@ -91,6 +121,12 @@ class DataBase:
         return data
 
     def new_password(self, password, email):
+        """
+        changing password
+        :param password: sequence of symbols
+        :param email: sequence of symbols
+        :return: none
+        """
         password = self.cur.execute(
             f"""UPDATE sign_up  SET password='{self.encode_password(password)}' 
             WHERE  EXISTS (SELECT 1 
@@ -101,6 +137,11 @@ class DataBase:
         self.data_base.commit()
 
     def search_email(self, email):
+        """
+        get user email
+        :param email: sequence of symbols
+        :return: none
+        """
         self.cur.execute(f"""SELECT email FROM info WHERE email='{email}'""")
         mail = self.cur.fetchone()
         if mail is None:
