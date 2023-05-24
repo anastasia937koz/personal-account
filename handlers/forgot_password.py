@@ -1,25 +1,37 @@
-import time
-from handlers.window import Window
-from PyQt6.QtWidgets import QMessageBox
+"""File for password reset"""
+
 from random import randint
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from PyQt6.QtWidgets import QMessageBox
+from handlers.window import Window
+
+
 
 
 class Password(Window):
-    def __init__(self, path, db, name):
-        super().__init__(path, db, name)
+    """class for password reset by generated """
+    def __init__(self, path, database, name):
+        super().__init__(path, database, name)
         self.form.sent_email.clicked.connect(self.sent_code)
         self.form.sent.clicked.connect(self.check_code)
 
     def generate_code(self):
+        """
+        generate code that consists of 6 symbols
+        :return: code of 6 symbols
+        """
         code = randint(100000, 999999)
         return code
 
     def sent_code(self):
+        """
+        send code to email
+        :return: none
+        """
         email = self.form.email.text()
-        if self.db.search_email(email):
+        if self.database.search_email(email):
             self.code = self.generate_code()
             # Параметры подключения к SMTP-серверу
             smtp_server = "smtp.mail.ru"  # Укажите адрес SMTP-сервера
@@ -51,6 +63,10 @@ class Password(Window):
             box1.exec()
 
     def check_code(self):
+        """
+        checking that the sent code matches the entered code
+        :return:none
+        """
         if self.form.code.text() == str(self.code):
             Window.open_windows["Новый пароль"]["object"].set_email(
                 self.form.email.text()

@@ -1,19 +1,20 @@
+"""File for making window"""
+from PyQt6 import uic
 from others import resource_path
 
-from PyQt6 import uic
 
 
 class Window:
+    """Class for making window"""
     open_windows = {}
-
-    def __init__(self, path, db, name):
+    def __init__(self, path, database, name):
         self.name = name
-        self.db = db
+        self.database = database
         # path = "design/registration.ui"
-        Form, Windows = uic.loadUiType(resource_path(path))
+        form, windows = uic.loadUiType(resource_path(path))
 
-        self.windows = Windows()
-        self.form = Form()
+        self.windows = windows()
+        self.form = form()
         self.form.setupUi(self.windows)
         Window.open_windows[name] = {
             "window": self.windows,
@@ -22,4 +23,8 @@ class Window:
         }
 
     def show(self):
+        """
+        show window
+        :return: none
+        """
         self.windows.show()

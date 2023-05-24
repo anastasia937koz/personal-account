@@ -1,30 +1,41 @@
-from handlers.window import Window
+"""File for making new personal account"""
 from PyQt6.QtWidgets import QFileDialog, QMessageBox
+from handlers.window import Window
+
 
 
 class Registration(Window):
-    def __init__(self, path, db, name):
-        super().__init__(path, db, name)
-        self.form.photo.clicked.connect(self.showDialog)
+    """Class for making new personal account """
+    def __init__(self, path, database, name):
+        super().__init__(path, database, name)
+        self.form.photo.clicked.connect(self.show_dialog)
         self.form.to_registr.clicked.connect(self.to_regist)
-        self.photo_PATH = ""
+        self.photo_path = ""
 
-    def showDialog(self):
+    def show_dialog(self):
+        """
+        show photo path
+        :return: none
+        """
         fname = QFileDialog.getOpenFileName(self.windows, "Выбрать файл", "/")
-        self.photo_PATH = fname[0]
-        way = self.photo_PATH.split("/")[-1]
+        self.photo_path = fname[0]
+        way = self.photo_path.split("/")[-1]
         self.form.description.setText(way)
 
     def to_regist(self):
+        """
+        making new personal account
+        :return: none
+        """
         name = self.form.name.text()
         surname = self.form.surname.text()
         birth = self.form.birth.text()
         email = self.form.email.text()
         login = self.form.login.text()
         password = self.form.password.text()
-        photo = self.photo_PATH
+        photo = self.photo_path
         try:
-            self.db.add_regist(name, surname, birth, email, photo, login, password)
+            self.database.add_regist(name, surname, birth, email, photo, login, password)
             Window.open_windows["Личный кабинет"]["object"].setter(
                 name, surname, birth, email, photo, login
             )
