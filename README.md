@@ -5,6 +5,9 @@ Application with registration and login process
 
 ## Screenshots
 <img src="https://github.com/anastasia937koz/personal-account/blob/master/screenshots/screeen_sign_up.PNG" alt="Sign up" width="1200"/>
+<img src="https://github.com/anastasia937koz/personal-account/blob/master/screenshots/screen_registration.PNG" alt="Registration" width="1200"/>
+<img src="https://github.com/anastasia937koz/personal-account/blob/master/screenshots/screen_account.PNG" alt="Account" width="1200"/>
+<img src="https://github.com/anastasia937koz/personal-account/blob/master/screenshots/screen_forgot_password.PNG" alt="Forgot password" width="1200"/>
 
 
 ## Frameworks
