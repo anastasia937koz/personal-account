@@ -4,20 +4,21 @@
 Application with registration and login process
 
 ## Screenshots
-<img src="https://github.com/AlliumPro/statistics-innoprog/blob/master/Screenshots/Authorization.png" alt="Authorization" width="1200"/>
-<img src="https://github.com/AlliumPro/statistics-innoprog/blob/master/Screenshots/Menu.png" alt="Menu" width="1200"/>
-<img src="https://github.com/AlliumPro/statistics-innoprog/blob/master/Screenshots/Attendance.png" alt="Attendance" width="1200"/>
-<img src="https://github.com/AlliumPro/statistics-innoprog/blob/master/Screenshots/Payments.png" alt="Payments" width="1200"/>
-<img src="https://github.com/AlliumPro/statistics-innoprog/blob/master/Screenshots/OfficeHours.png" alt="Office Hours" width="1200"/>
+<img src="https://github.com/anastasia937koz/personal-account/blob/master/screenshots/screeen_sign_up.PNG" alt="Sign up" width="1200"/>
+
 
 ## Frameworks
-Application was created using PyQT6 
+Application was created using `PyQT6` 
 
-The interface was designed by QTDesigner
+Forgot password feature realised by sending code on email implemented using `smtplib` library
 
-Code was written on Python 3.11
+To ensure the security of secret values was decided to use `.env` file
 
-Connected with the PostgreSQL database, managed with pgAdmin 4
+The interface was designed by `QTDesigner`
+
+Code was written on `Python 3.10`
+
+Connected with the `PostgreSQL` database by `psycopg2`, managed with `pgAdmin 4`
 
 
 ## References
@@ -37,12 +38,13 @@ Connected with the PostgreSQL database, managed with pgAdmin 4
 - Qt Designer manual: https://doc.qt.io/qt-5/qtdesigner-manual.html
 - Qt Designer tutorial: https://build-system.fman.io/qt-designer-tutorial
 - PyQt6 tutorial with Qt Designer: https://www.learnpyqt.com/tutorials/creating-guis-with-qt-designer/
-### Datetime:
-- Official datetime documentation: https://docs.python.org/3/library/datetime.html
-- Python datetime tutorial: https://realpython.com/python-datetime/
-- Date and Time in Python: https://www.programiz.com/python-programming/datetime
-### Google Transliterate:
-- Google Cloud Translation API documentation: https://cloud.google.com/translate/docs
-- Python client for Google Cloud Translation API: https://pypi.org/project/google-cloud-translate/
-- Google Transliterate API documentation: https://developers.google.com/transliterate/
-- Google Input Tools API: https://inputtools.google.com/developers/docs/transliteration
+### Smtplib
+- Smtplib documentation: https://docs.python.org/3/library/smtplib.html
+### Dotenv
+- Dotenv documentation: https://github.com/motdotla/dotenv
+- Dotenv tutorial: https://github.com/theskumar/python-dotenv
+
+
+## How to use
+### Description
+
