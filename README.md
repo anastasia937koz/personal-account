@@ -47,4 +47,6 @@ Connected with the `PostgreSQL` database by `psycopg2`, managed with `pgAdmin 4`
 
 ## How to use
 ### Description
+Need to open `output` directory and download `personal_account.exe` file
+
 
