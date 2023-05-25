@@ -14,6 +14,7 @@ class Password(Window):
     """class for password reset by generated """
     def __init__(self, path, database, name):
         super().__init__(path, database, name)
+        self.code=None
         self.form.sent_email.clicked.connect(self.sent_code)
         self.form.sent.clicked.connect(self.check_code)
 

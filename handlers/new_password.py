@@ -8,6 +8,7 @@ class NewPassword(Window):
     """Class foe updatind new password"""
     def __init__(self, path, database, name):
         super().__init__(path, database, name)
+        self.email=None
         self.form.save.clicked.connect(self.check_password)
 
     def set_email(self, email):

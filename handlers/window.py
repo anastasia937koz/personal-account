@@ -28,3 +28,10 @@ class Window:
         :return: none
         """
         self.windows.show()
+
+    def hide(self):
+        """
+        hide windows
+        :return: none
+        """
+        self.windows.hide()
