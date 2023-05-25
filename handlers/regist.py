@@ -1,5 +1,5 @@
 """File for making new personal account"""
-from PyQt6.QtWidgets import QFileDialog, QMessageBox
+from PyQt6.QtWidgets import QFileDialog, QMessageBox, QLineEdit
 from handlers.window import Window
 
 
@@ -39,6 +39,7 @@ class Registration(Window):
             Window.open_windows["Личный кабинет"]["object"].setter(
                 name, surname, birth, email, photo, login
             )
+            self.clear_line_edits()
             Window.open_windows["Регистрация"]["window"].hide()
             Window.open_windows["Личный кабинет"]["window"].show()
         except ValueError:
@@ -47,3 +48,9 @@ class Registration(Window):
             box1.setStandardButtons(QMessageBox.StandardButton.Ok)
             box1.setIcon(QMessageBox.Icon.Warning)
             box1.exec()
+
+    def clear_line_edits(self):
+        for widget in self.windows.findChildren(QLineEdit):
+            widget.clear()
+
+
